@@ -1,24 +1,25 @@
 .square {
   background: #fff;
   border: 1px solid #999;
-  float: left;
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 80px;
   margin-right: -1px;
   margin-top: -1px;
-  padding: 0;
   text-align: center;
-  width: 34px;
+  width: 25%;
+  padding: 5px;
 }
 
 .square:focus {
   outline: none;
 }
 
-.board-row:after {
-  clear: both;
-  content: '';
-  display: table;
+.board-row {
+  display: flex;
+  justify-content: flex-start;
+  width: 80%;
+  min-width: 230px;
+  overflow: hidden;
 }
