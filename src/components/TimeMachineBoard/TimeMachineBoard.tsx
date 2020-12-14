@@ -28,7 +28,7 @@ const TimeMachineBoard = ({ size }: ITimeMachineBoard) => {
   ]);
   console.log(squares);
   const handleClick = (i: number) => {
-    const newSquares = squares.slice();
+    const newSquares = Array(size * size).fill(false);
     newSquares[i] = true;
     setSquares(newSquares);
   };
