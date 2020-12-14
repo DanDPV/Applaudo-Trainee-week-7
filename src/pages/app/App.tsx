@@ -1,8 +1,9 @@
 import React from 'react';
+import TimeMachinePage from 'pages/TimeMachinePage/TimeMachinePage';
 
 function App() {
   return (
-    <h1>Time machine</h1>
+    <TimeMachinePage />
   );
 }
 
