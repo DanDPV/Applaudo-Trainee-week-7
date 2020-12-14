@@ -7,7 +7,7 @@ interface ITimeMachineBoard {
 }
 
 const TimeMachineBoard = ({ size }: ITimeMachineBoard) => {
-  const [squares] = useState<boolean[]>(Array(size * size).fill(false));
+  const [squares, setSquares] = useState<boolean[]>(Array(size * size).fill(false));
   const [colors] = useState<string[]>([
     '#f466c8',
     '#6a56fc',
@@ -27,15 +27,20 @@ const TimeMachineBoard = ({ size }: ITimeMachineBoard) => {
     '#7d3f09',
   ]);
   console.log(squares);
-  const handleClick = (i: number) => console.log(i);
+  const handleClick = (i: number) => {
+    const newSquares = squares.slice();
+    newSquares[i] = true;
+    setSquares(newSquares);
+  };
   return (
     <div>
       <div className="board-grid">
-        {squares.map((v: boolean, position: number) => (
+        {squares.map((checked: boolean, position: number) => (
           <BoardButton
             key={colors[position]}
             position={position}
             bgColor={colors[position]}
+            checked={checked}
             handleClick={handleClick}
           />
         ))}
