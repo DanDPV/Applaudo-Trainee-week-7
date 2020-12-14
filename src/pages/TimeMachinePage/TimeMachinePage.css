@@ -10,6 +10,11 @@ body {
 .container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.board {
+    flex-grow: 1;
 }
 
 @media only screen and (max-width: 900px) {
