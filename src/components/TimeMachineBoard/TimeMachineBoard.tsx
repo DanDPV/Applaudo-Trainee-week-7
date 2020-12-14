@@ -26,7 +26,6 @@ const TimeMachineBoard = ({ size }: ITimeMachineBoard) => {
     '#7d3f99',
     '#7d3f09',
   ]);
-  console.log(squares);
   const handleClick = (i: number) => {
     const newSquares = Array(size * size).fill(false);
     newSquares[i] = true;
