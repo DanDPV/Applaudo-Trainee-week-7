@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import BoardButton from 'components/BoardButton/BoardButton';
 import 'components/TimeMachineBoard/TimeMachineBoard.css';
 
 const TimeMachineBoard = () => {
@@ -22,17 +23,18 @@ const TimeMachineBoard = () => {
     '#7d3f09',
   ]);
   console.log(squares);
-  const renderSquare = (i: number, bgColor: string) => (
-    <button type="button" key={i} style={{ backgroundColor: bgColor }} className="square" onClick={() => { console.log(i); }}>
-      {i}
-    </button>
-  );
+  const handleClick = (i: number) => console.log(i);
   return (
     <div>
       <div className="board-grid">
-        {
-          squares.map((v: boolean, i: number) => renderSquare(i, colors[i]))
-        }
+        {squares.map((v: boolean, position: number) => (
+          <BoardButton
+            key={colors[position]}
+            position={position}
+            bgColor={colors[position]}
+            handleClick={handleClick}
+          />
+        ))}
       </div>
     </div>
   );
