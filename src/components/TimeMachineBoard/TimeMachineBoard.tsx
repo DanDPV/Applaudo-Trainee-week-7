@@ -27,7 +27,7 @@ const TimeMachineBoard = ({ size }: ITimeMachineBoard) => {
     '#7d3f09',
   ]);
   const handleClick = (i: number) => {
-    const newSquares = Array(size * size).fill(false);
+    const newSquares = Array(size * size).fill(false) as boolean[];
     newSquares[i] = true;
     setSquares(newSquares);
   };
