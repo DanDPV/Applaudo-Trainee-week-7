@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import 'components/TimeMachineBoard/TimeMachineBoard.css';
 
 const TimeMachineBoard = () => {
-  const [board] = useState();
-  console.log(board);
+  const [squares] = useState(Array(4 * 4).fill(null));
+  console.log(squares);
   const renderSquare = (i: number) => (
     <button type="button" className="square" onClick={() => {}}>
       {i}
