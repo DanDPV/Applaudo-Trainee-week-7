@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import BoardButton from 'components/BoardButton/BoardButton';
 import 'components/TimeMachineBoard/TimeMachineBoard.css';
 
-const TimeMachineBoard = () => {
-  const [squares] = useState<boolean[]>(Array(4 * 4).fill(false));
+interface ITimeMachineBoard {
+  size: number;
+}
+
+const TimeMachineBoard = ({ size }: ITimeMachineBoard) => {
+  const [squares] = useState<boolean[]>(Array(size * size).fill(false));
   const [colors] = useState<string[]>([
     '#f466c8',
     '#6a56fc',
