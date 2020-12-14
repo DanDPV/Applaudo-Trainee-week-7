@@ -1,5 +1,6 @@
 import React from 'react';
-import TimeMachineBoard from 'components/TimeMachineBoard';
+import TimeMachineBoard from 'components/TimeMachineBoard/TimeMachineBoard';
+import 'pages/TimeMachinePage/TimeMachinePage.css';
 
 const TimeMachinePage = () => (
   <div className="page-content">
