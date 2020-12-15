@@ -25,6 +25,9 @@ const BoardButton = ({
       opacity: checked ? '100%' : '50%',
       cursor: isTraveling ? 'not-allowed' : 'pointer',
       boxShadow: checked ? '0 0 4px rgba(0, 0, 0, 0.16), 0 6px 8px rgba(0, 0, 0, 0.26)' : 'none',
+      border: checked ? 'groove' : 'none',
+      borderColor: checked ? 'black' : 'none',
+      borderWidth: checked ? 'thin' : '0',
     }}
     onClick={() => handleClick(position)}
   >
