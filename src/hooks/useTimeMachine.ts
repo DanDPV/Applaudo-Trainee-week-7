@@ -3,21 +3,15 @@ import { useCallback, useEffect, useRef } from 'react';
 
 const useTimeMachine = <T>(
   value: T,
-  isTraveling: boolean,
 ): [T | undefined, (position: number) => T | undefined, number] => {
   const ref = useRef<T>();
   const history = useRef<T[]>([]);
 
-  const getPreviousValue = useCallback(
-    (position: number) => history.current[position],
-    [value],
-  );
+  const getPreviousValue = (position: number) => history.current[position];
 
   useEffect(() => {
     ref.current = value;
-    if (!isTraveling) {
-      history.current.unshift(value);
-    }
+    history.current.unshift(value);
   }, [value]);
 
   return [ref.current, getPreviousValue, history.current.length];
