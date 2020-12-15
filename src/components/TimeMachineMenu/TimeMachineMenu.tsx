@@ -13,10 +13,14 @@ const TimeMachineMenu = ({
   getPreviousValue,
 }: ITimeMachineMenu) => {
   const [isDisabledPrevious, setIsDisabledPrevious] = useState<boolean>(true);
+  const [isDisabledNext, setIsDisabledNext] = useState<boolean>(true);
 
   useEffect(() => {
-    if (currentPosition > timeLength) setIsDisabledPrevious(true);
+    if (timeLength === 0 || currentPosition === (timeLength - 1)) setIsDisabledPrevious(true);
     else setIsDisabledPrevious(false);
+
+    if (currentPosition === 0) setIsDisabledNext(true);
+    else setIsDisabledNext(false);
   }, [currentPosition, timeLength]);
 
   return (
@@ -27,6 +31,13 @@ const TimeMachineMenu = ({
         onClick={() => getPreviousValue(+1)}
       >
         Previous
+      </button>
+      <button
+        type="button"
+        disabled={isDisabledNext}
+        onClick={() => getPreviousValue(-1)}
+      >
+        Next
       </button>
     </div>
   );
