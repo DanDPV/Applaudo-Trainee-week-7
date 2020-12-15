@@ -25,8 +25,9 @@ const TimeMachinePage = () => {
     const newPosition = currentPosition + step;
 
     setCurrentPosition(newPosition);
-    if (newPosition !== 0) setIsTraveling(true);
-    else {
+    if (newPosition !== 0) {
+      setIsTraveling(true);
+    } else {
       setIsTraveling(false);
       setHistorySquares(getPreviousValue(newPosition) ?? Array(size * size).fill(false));
     }
