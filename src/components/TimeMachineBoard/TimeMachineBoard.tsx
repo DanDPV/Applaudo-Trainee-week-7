@@ -1,13 +1,14 @@
+/* eslint no-unused-vars: 0 */
 import React, { useState } from 'react';
 import BoardButton from 'components/BoardButton/BoardButton';
 import 'components/TimeMachineBoard/TimeMachineBoard.css';
 
 interface ITimeMachineBoard {
-  size: number;
+  squares: boolean[];
+  handleClick(position: number): void;
 }
 
-const TimeMachineBoard = ({ size }: ITimeMachineBoard) => {
-  const [squares, setSquares] = useState<boolean[]>(Array(size * size).fill(false));
+const TimeMachineBoard = ({ squares, handleClick }: ITimeMachineBoard) => {
   const [colors] = useState<string[]>([
     '#f466c8',
     '#6a56fc',
@@ -26,11 +27,7 @@ const TimeMachineBoard = ({ size }: ITimeMachineBoard) => {
     '#7d3f99',
     '#7d3f09',
   ]);
-  const handleClick = (i: number) => {
-    const newSquares = Array(size * size).fill(false) as boolean[];
-    newSquares[i] = true;
-    setSquares(newSquares);
-  };
+
   return (
     <div>
       <div className="board-grid">
