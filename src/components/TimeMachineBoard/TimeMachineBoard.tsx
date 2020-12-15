@@ -5,10 +5,11 @@ import 'components/TimeMachineBoard/TimeMachineBoard.css';
 
 interface ITimeMachineBoard {
   squares: boolean[];
+  isTraveling: boolean;
   handleClick(position: number): void;
 }
 
-const TimeMachineBoard = ({ squares, handleClick }: ITimeMachineBoard) => {
+const TimeMachineBoard = ({ squares, isTraveling, handleClick }: ITimeMachineBoard) => {
   const [colors] = useState<string[]>([
     '#f466c8',
     '#6a56fc',
@@ -38,6 +39,7 @@ const TimeMachineBoard = ({ squares, handleClick }: ITimeMachineBoard) => {
             bgColor={colors[position]}
             checked={checked}
             handleClick={handleClick}
+            isTraveling={isTraveling}
           />
         ))}
       </div>
