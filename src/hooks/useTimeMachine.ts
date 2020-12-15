@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef } from 'react';
 const useTimeMachine = <T>(
   value: T,
   isTraveling: boolean,
-): [T | undefined, (position: number) => T, number] => {
+): [T | undefined, (position: number) => T | undefined, number] => {
   const ref = useRef<T>();
   const history = useRef<T[]>([]);
 
