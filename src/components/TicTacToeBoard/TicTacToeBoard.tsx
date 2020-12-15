@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import TicTacToeBoardButton from 'components/TicTacToeBoardButton/TicTacToeBoardButton';
 import ITicTacToeSquareState from 'interfaces/ITicTacToeSquareState';
+import 'components/TicTacToeBoard/TicTacToeBoard.css';
 
 interface ITicTacToeBoard {
   squares: ITicTacToeSquareState[];
@@ -14,7 +15,7 @@ const TicTacToeBoard = ({ squares, isTraveling, handleClick }: ITicTacToeBoard) 
 
   return (
     <div>
-      <div className="board-grid">
+      <div className="tic-tac-toe-board-grid">
         {squares.map((state: ITicTacToeSquareState, position: number) => (
           <TicTacToeBoardButton
             key={state.id}
