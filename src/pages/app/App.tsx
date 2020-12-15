@@ -1,9 +1,9 @@
 import React from 'react';
-import TimeMachinePage from 'pages/TimeMachinePage/TimeMachinePage';
+import AppRouter from 'routers/AppRouter/AppRouter';
 
 function App() {
   return (
-    <TimeMachinePage />
+    <AppRouter />
   );
 }
 
