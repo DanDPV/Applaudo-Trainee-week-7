@@ -5,12 +5,14 @@ interface ITimeMachineMenu {
   currentPosition: number;
   timeLength: number;
   getPreviousValue(step: number): void;
+  handleReset(): void;
 }
 
 const TimeMachineMenu = ({
   currentPosition,
   timeLength,
   getPreviousValue,
+  handleReset,
 }: ITimeMachineMenu) => {
   const [isDisabledPrevious, setIsDisabledPrevious] = useState<boolean>(true);
   const [isDisabledNext, setIsDisabledNext] = useState<boolean>(true);
@@ -42,6 +44,13 @@ const TimeMachineMenu = ({
         onClick={() => getPreviousValue(-1)}
       >
         Next
+      </button>
+      <button
+        type="button"
+        disabled={isDisabledNext}
+        onClick={() => handleReset()}
+      >
+        Resume
       </button>
     </div>
   );
