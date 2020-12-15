@@ -1,6 +1,9 @@
+/* eslint no-unused-vars: 0 */
 import TicTacToeBoard from 'components/TicTacToeBoard/TicTacToeBoard';
+import useTimeMachine from 'hooks/useTimeMachine';
 import ITicTacToeSquareState from 'interfaces/ITicTacToeSquareState';
 import React, { useState } from 'react';
+import { calculateWinner } from 'utils/utils';
 
 const TicTacToePage = () => {
   const initGameValues = [
@@ -14,10 +17,32 @@ const TicTacToePage = () => {
     { id: 7, value: null },
     { id: 8, value: null },
   ];
-  const [isTraveling] = useState<boolean>(false);
-  const [squares] = useState<ITicTacToeSquareState[]>(initGameValues);
+  const [currentPosition, setCurrentPosition] = useState<number>(0);
+  const [xIsNext, setXIsNext] = useState<boolean>(true);
+  const [isTraveling, setIsTraveling] = useState<boolean>(false);
+  const [squares, setSquares] = useState<ITicTacToeSquareState[]>(initGameValues);
+  const [historySquares, setHistorySquares] = useState<ITicTacToeSquareState[]>(initGameValues);
+  const [, getPreviousValue, timeLength] = useTimeMachine(historySquares);
 
-  const handleClick = () => {};
+  const handleClick = (position: number) => {
+    if (!isTraveling) {
+      const newSquares = historySquares.slice();
+
+      if (newSquares) {
+        if (calculateWinner(squares)) {
+          return;
+        }
+        if (squares[position].value) {
+          return;
+        }
+
+        newSquares[position].value = xIsNext ? 'x' : 'o';
+        setXIsNext(!xIsNext);
+        setSquares(newSquares);
+        setHistorySquares(newSquares);
+      }
+    }
+  };
 
   return (
     <div className="page-content">
