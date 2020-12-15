@@ -27,7 +27,7 @@ const BoardButton = ({
     }}
     onClick={() => handleClick(position)}
   >
-    {position}
+    {' '}
   </button>
 );
 
