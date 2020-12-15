@@ -13,13 +13,15 @@ const TimeMachinePage = () => {
   const [, getPreviousValue, timeLength] = useTimeMachine(historySquares);
 
   const handleClick = (i: number) => {
-    const newSquares = Array(size * size).fill(false) as boolean[];
-    newSquares[i] = true;
-    setSquares(newSquares);
-    setHistorySquares(newSquares);
+    if (!isTraveling) {
+      const newSquares = Array(size * size).fill(false) as boolean[];
+      newSquares[i] = true;
+      setSquares(newSquares);
+      setHistorySquares(newSquares);
+    }
   };
-  console.log(timeLength);
-  console.log(isTraveling);
+  // console.log(timeLength);
+  // console.log(isTraveling);
   const handleGetPrevious = (step: number) => {
     const newPosition = currentPosition + step;
     // console.log(newPosition);
@@ -37,7 +39,11 @@ const TimeMachinePage = () => {
       <h1>Time machine</h1>
       <div className="container">
         <div className="board">
-          <TimeMachineBoard squares={squares} handleClick={handleClick} />
+          <TimeMachineBoard
+            squares={squares}
+            handleClick={handleClick}
+            isTraveling={isTraveling}
+          />
         </div>
         <div className="info">
           <TimeMachineMenu
