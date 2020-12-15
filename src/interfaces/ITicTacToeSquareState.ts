@@ -1,6 +1,6 @@
 interface ITicTacToeSquareState {
   id: number;
-  value: boolean;
+  value: 'x' | 'o' | null;
 }
 
 export default ITicTacToeSquareState;
