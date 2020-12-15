@@ -1,6 +1,5 @@
 /* eslint no-unused-vars: 0 */
-/* eslint arrow-body-style: 0 */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface ITimeMachineMenu {
   currentPosition: number;
@@ -9,8 +8,15 @@ interface ITimeMachineMenu {
 }
 
 const TimeMachineMenu = ({ currentPosition, timeLength, getPreviousValue }: ITimeMachineMenu) => {
+  const [isDisabledPrevious, setIsDisabledPrevious] = useState(true);
+
+  useEffect(() => {
+    if (currentPosition > timeLength) setIsDisabledPrevious(true);
+    else setIsDisabledPrevious(false);
+  }, [currentPosition, timeLength]);
+
   return (
-    <button type="button" onClick={() => getPreviousValue(+1)}>
+    <button type="button" disabled={isDisabledPrevious} onClick={() => getPreviousValue(+1)}>
       Previous
     </button>
   );
