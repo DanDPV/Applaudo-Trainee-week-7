@@ -1,6 +1,9 @@
+/* eslint no-unused-vars: 0 */
 import { useCallback, useEffect, useRef } from 'react';
 
-const useTimeMachine = <T>(value: T) => {
+const useTimeMachine = <T>(
+  value: T,
+): [T | undefined, (position: number) => T] => {
   const ref = useRef<T>();
   const history = useRef<T[]>([]);
 
