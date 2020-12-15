@@ -3,7 +3,7 @@ import TicTacToeBoard from 'components/TicTacToeBoard/TicTacToeBoard';
 import useTimeMachine from 'hooks/useTimeMachine';
 import ITicTacToeSquareState from 'interfaces/ITicTacToeSquareState';
 import React, { useState } from 'react';
-import { calculateWinner } from 'utils/utils';
+import { calculateTicTacToeWinner } from 'utils/utils';
 
 const TicTacToePage = () => {
   const initGameValues = [
@@ -29,7 +29,7 @@ const TicTacToePage = () => {
       const newSquares = historySquares.slice();
 
       if (newSquares) {
-        if (calculateWinner(squares)) {
+        if (calculateTicTacToeWinner(squares)) {
           return;
         }
         if (squares[position].value) {
