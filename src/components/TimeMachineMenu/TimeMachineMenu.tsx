@@ -7,7 +7,11 @@ interface ITimeMachineMenu {
   getPreviousValue(step: number): void;
 }
 
-const TimeMachineMenu = ({ currentPosition, timeLength, getPreviousValue }: ITimeMachineMenu) => {
+const TimeMachineMenu = ({
+  currentPosition,
+  timeLength,
+  getPreviousValue,
+}: ITimeMachineMenu) => {
   const [isDisabledPrevious, setIsDisabledPrevious] = useState(true);
 
   useEffect(() => {
@@ -16,9 +20,15 @@ const TimeMachineMenu = ({ currentPosition, timeLength, getPreviousValue }: ITim
   }, [currentPosition, timeLength]);
 
   return (
-    <button type="button" disabled={isDisabledPrevious} onClick={() => getPreviousValue(+1)}>
-      Previous
-    </button>
+    <div className="menu-container">
+      <button
+        type="button"
+        disabled={isDisabledPrevious}
+        onClick={() => getPreviousValue(+1)}
+      >
+        Previous
+      </button>
+    </div>
   );
 };
 
