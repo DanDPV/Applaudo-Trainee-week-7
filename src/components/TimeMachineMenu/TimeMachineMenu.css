@@ -1,0 +1,46 @@
+.menu-container {
+  background-color: aqua;
+  margin: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.menu-option {
+  margin: 10px;
+  padding: 10px;
+  color: white;
+  font-size: 13px;
+  width: 100px;
+  background-color: brown;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.26);
+  -webkit-transition: box-shadow 0.2s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  transition: box-shadow 0.2s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.menu-option:hover {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32);
+  -webkit-transition: box-shadow 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: box-shadow 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  background-color: #d30000;
+  color: white;
+}
+
+.menu-option:focus {
+  outline: 0;
+}
+
+.menu-option:disabled {
+  background-color: rgb(95, 95, 95);
+}
+
+.menu-option:disabled:hover {
+  background-color: rgb(95, 95, 95);
+  cursor: not-allowed;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.26);
+  -webkit-transition: box-shadow 0.2s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  transition: box-shadow 0.2s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+}
