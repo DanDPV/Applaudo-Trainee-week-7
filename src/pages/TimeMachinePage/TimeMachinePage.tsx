@@ -34,6 +34,12 @@ const TimeMachinePage = () => {
     setSquares(getPreviousValue(newPosition) ?? Array(size * size).fill(false));
   };
 
+  const handleReset = () => {
+    setCurrentPosition(0);
+    setIsTraveling(false);
+    setSquares(getPreviousValue(0) ?? Array(size * size).fill(false));
+  };
+
   return (
     <div className="page-content">
       <h1>Time machine</h1>
@@ -48,6 +54,7 @@ const TimeMachinePage = () => {
         <div className="info">
           <TimeMachineMenu
             getPreviousValue={handleGetPrevious}
+            handleReset={handleReset}
             currentPosition={currentPosition}
             timeLength={timeLength}
           />
