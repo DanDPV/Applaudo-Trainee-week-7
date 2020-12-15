@@ -9,19 +9,26 @@ const TimeMachinePage = () => {
   const [currentPosition, setCurrentPosition] = useState<number>(0);
   const [isTraveling, setIsTraveling] = useState<boolean>(false);
   const [squares, setSquares] = useState<boolean[]>(Array(size * size).fill(false));
-  const [, getPreviousValue, timeLength] = useTimeMachine(squares, isTraveling);
+  const [historySquares, setHistorySquares] = useState<boolean[]>(Array(size * size).fill(false));
+  const [, getPreviousValue, timeLength] = useTimeMachine(historySquares);
 
   const handleClick = (i: number) => {
     const newSquares = Array(size * size).fill(false) as boolean[];
     newSquares[i] = true;
     setSquares(newSquares);
+    setHistorySquares(newSquares);
   };
-
+  console.log(timeLength);
+  console.log(isTraveling);
   const handleGetPrevious = (step: number) => {
     const newPosition = currentPosition + step;
+    // console.log(newPosition);
     setCurrentPosition(newPosition);
     if (newPosition !== 0) setIsTraveling(true);
-    else setIsTraveling(false);
+    else {
+      setIsTraveling(false);
+      setHistorySquares(getPreviousValue(newPosition) ?? Array(size * size).fill(false));
+    }
     setSquares(getPreviousValue(newPosition) ?? Array(size * size).fill(false));
   };
 
