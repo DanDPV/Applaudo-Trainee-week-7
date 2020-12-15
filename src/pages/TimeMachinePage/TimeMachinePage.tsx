@@ -7,8 +7,9 @@ import 'pages/TimeMachinePage/TimeMachinePage.css';
 const TimeMachinePage = () => {
   const size = 4;
   const [currentPosition, setCurrentPosition] = useState<number>(0);
+  const [isTraveling, setIsTraveling] = useState<boolean>(false);
   const [squares, setSquares] = useState<boolean[]>(Array(size * size).fill(false));
-  const [, getPreviousValue, timeLength] = useTimeMachine(squares);
+  const [, getPreviousValue, timeLength] = useTimeMachine(squares, isTraveling);
 
   const handleClick = (i: number) => {
     const newSquares = Array(size * size).fill(false) as boolean[];
@@ -16,9 +17,11 @@ const TimeMachinePage = () => {
     setSquares(newSquares);
   };
   const handleGetPrevious = (step: number) => {
-    setCurrentPosition(p => p + step);
-    console.log(timeLength);
-    setSquares(getPreviousValue(currentPosition + step));
+    const newPosition = currentPosition + step;
+    setCurrentPosition(newPosition);
+    if (newPosition !== 0) setIsTraveling(true);
+    else setIsTraveling(false);
+    setSquares(getPreviousValue(newPosition));
   };
   return (
     <div className="page-content">
