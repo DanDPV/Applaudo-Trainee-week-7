@@ -6,6 +6,7 @@ interface IBoardButton {
   position: number;
   bgColor: string;
   checked: boolean;
+  isTraveling: boolean;
   handleClick(position: number): void;
 }
 
@@ -13,12 +14,17 @@ const BoardButton = ({
   position,
   bgColor,
   checked,
+  isTraveling,
   handleClick,
 }: IBoardButton) => (
   <button
     type="button"
     className="square"
-    style={{ backgroundColor: bgColor, opacity: checked ? '100%' : '50%' }}
+    style={{
+      backgroundColor: bgColor,
+      opacity: checked ? '100%' : '50%',
+      cursor: isTraveling ? 'not-allowed' : 'pointer',
+    }}
     onClick={() => handleClick(position)}
   >
     {position}
