@@ -1,11 +1,7 @@
 /* eslint no-unused-vars: 0 */
 import React, { useState } from 'react';
 import TicTacToeBoardButton from 'components/TicTacToeBoardButton/TicTacToeBoardButton';
-
-interface ITicTacToeSquareState {
-  id: string;
-  value: boolean;
-}
+import ITicTacToeSquareState from 'interfaces/ITicTacToeSquareState';
 
 interface ITicTacToeBoard {
   squares: ITicTacToeSquareState[];
