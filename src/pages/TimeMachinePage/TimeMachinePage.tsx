@@ -20,11 +20,10 @@ const TimeMachinePage = () => {
       setHistorySquares(newSquares);
     }
   };
-  // console.log(timeLength);
-  // console.log(isTraveling);
+
   const handleGetPrevious = (step: number) => {
     const newPosition = currentPosition + step;
-    // console.log(newPosition);
+
     setCurrentPosition(newPosition);
     if (newPosition !== 0) setIsTraveling(true);
     else {
