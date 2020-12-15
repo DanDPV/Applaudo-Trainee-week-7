@@ -16,6 +16,7 @@ const TimeMachinePage = () => {
     newSquares[i] = true;
     setSquares(newSquares);
   };
+
   const handleGetPrevious = (step: number) => {
     const newPosition = currentPosition + step;
     setCurrentPosition(newPosition);
@@ -23,6 +24,7 @@ const TimeMachinePage = () => {
     else setIsTraveling(false);
     setSquares(getPreviousValue(newPosition));
   };
+
   return (
     <div className="page-content">
       <h1>Time machine</h1>
