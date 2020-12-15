@@ -4,7 +4,7 @@ import React from 'react';
 interface ITicTacToeBoardButton {
   position: number;
   bgColor: string;
-  checked: boolean;
+  checked: 'x' | 'o' | null;
   isTraveling: boolean;
   handleClick(position: number): void;
 }
