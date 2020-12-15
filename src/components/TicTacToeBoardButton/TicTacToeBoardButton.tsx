@@ -1,5 +1,6 @@
 /* eslint no-unused-vars: 0 */
 import React from 'react';
+import 'components/TicTacToeBoardButton/TicTacToeBoardButton.css';
 
 interface ITicTacToeBoardButton {
   position: number;
@@ -18,9 +19,8 @@ const TicTacToeBoardButton = ({
 }: ITicTacToeBoardButton) => (
   <button
     type="button"
-    className="tic-tac-toe-square"
+    className="tic-tac-toe-square dashed thick"
     style={{
-      backgroundColor: bgColor,
       cursor: isTraveling ? 'not-allowed' : 'pointer',
     }}
     onClick={() => handleClick(position)}
