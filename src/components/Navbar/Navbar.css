@@ -24,7 +24,7 @@ button {
 nav {
   display: flex;
   flex-wrap: wrap;
-  background-color: tomato;
+  background-color: teal;
   padding: 0 10% 10px;
   justify-content: space-between;
   box-shadow: 0 0 10px #00000077;
