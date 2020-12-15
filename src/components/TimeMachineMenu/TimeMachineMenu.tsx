@@ -1,5 +1,6 @@
 /* eslint no-unused-vars: 0 */
 import React, { useEffect, useState } from 'react';
+import 'components/TimeMachineMenu/TimeMachineMenu.css';
 
 interface ITimeMachineMenu {
   currentPosition: number;
@@ -33,6 +34,7 @@ const TimeMachineMenu = ({
     <div className="menu-container">
       <button
         type="button"
+        className="menu-option"
         disabled={isDisabledPrevious}
         onClick={() => getPreviousValue(+1)}
       >
@@ -40,6 +42,7 @@ const TimeMachineMenu = ({
       </button>
       <button
         type="button"
+        className="menu-option"
         disabled={isDisabledNext}
         onClick={() => getPreviousValue(-1)}
       >
@@ -47,6 +50,7 @@ const TimeMachineMenu = ({
       </button>
       <button
         type="button"
+        className="menu-option"
         disabled={isDisabledNext}
         onClick={() => handleResume()}
       >
