@@ -22,7 +22,7 @@ const TimeMachinePage = () => {
     setCurrentPosition(newPosition);
     if (newPosition !== 0) setIsTraveling(true);
     else setIsTraveling(false);
-    setSquares(getPreviousValue(newPosition));
+    setSquares(getPreviousValue(newPosition) ?? Array(size * size).fill(false));
   };
 
   return (
