@@ -12,7 +12,7 @@ const TimeMachineMenu = ({
   timeLength,
   getPreviousValue,
 }: ITimeMachineMenu) => {
-  const [isDisabledPrevious, setIsDisabledPrevious] = useState(true);
+  const [isDisabledPrevious, setIsDisabledPrevious] = useState<boolean>(true);
 
   useEffect(() => {
     if (currentPosition > timeLength) setIsDisabledPrevious(true);
