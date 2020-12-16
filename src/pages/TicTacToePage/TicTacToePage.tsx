@@ -5,6 +5,7 @@ import useTimeMachine from 'hooks/useTimeMachine';
 import React, { useEffect, useState } from 'react';
 import TicTacToeSquareType from 'types/TicTacToeSquareType';
 import { calculateTicTacToeWinner } from 'utils/utils';
+import 'pages/TicTacToePage/TicTacToePage.css';
 
 const TicTacToePage = () => {
   const size = 9;
@@ -74,9 +75,9 @@ const TicTacToePage = () => {
     <div className="page-content">
       <h1>Tic Tac Toe</h1>
       <div className="tic-tac-toe-messages">
-        <h5>{isTraveling ? 'You are now traveling in time' : 'You are currently in present'}</h5>
-        {winner && <h5>{`The winner is: ${winner}`}</h5>}
-        {error && <h5>{error}</h5>}
+        <h5 className="tic-tac-toe-is-traveling">{isTraveling ? 'You are now traveling in time' : 'You are currently in present'}</h5>
+        {winner && <h5 className="tic-tac-toe-winner">{`The winner is: ${winner}`}</h5>}
+        {error && <h5 className="tic-tac-toe-error">{error}</h5>}
       </div>
       <div className="container">
         <div className="board">
