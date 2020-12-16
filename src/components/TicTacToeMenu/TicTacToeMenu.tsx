@@ -7,6 +7,7 @@ interface ITicTacToeMenu {
   currentPosition: number;
   timeLength: number;
   xIsNext: boolean;
+  isReplaying: boolean;
   winner: TicTacToeSquareType | string;
   getPreviousValue(step: number): void;
   handleResume(): void;
@@ -18,6 +19,7 @@ const TicTacToeMenu = ({
   currentPosition,
   timeLength,
   xIsNext,
+  isReplaying,
   winner,
   getPreviousValue,
   handleResume,
@@ -45,7 +47,7 @@ const TicTacToeMenu = ({
         <button
           type="button"
           className="menu-option"
-          disabled={isDisabledPrevious}
+          disabled={isDisabledPrevious || isReplaying}
           onClick={() => getPreviousValue(+1)}
         >
           Previous
@@ -53,7 +55,7 @@ const TicTacToeMenu = ({
         <button
           type="button"
           className="menu-option"
-          disabled={isDisabledNext}
+          disabled={isDisabledNext || isReplaying}
           onClick={() => getPreviousValue(-1)}
         >
           Next
@@ -61,7 +63,7 @@ const TicTacToeMenu = ({
         <button
           type="button"
           className="menu-option"
-          disabled={isDisabledNext}
+          disabled={isDisabledNext || isReplaying}
           onClick={() => handleResume()}
         >
           Resume
@@ -72,6 +74,7 @@ const TicTacToeMenu = ({
         <button
           type="button"
           className="menu-option"
+          disabled={isReplaying}
           onClick={() => handleReset()}
         >
           Reset
@@ -83,6 +86,7 @@ const TicTacToeMenu = ({
           <button
             type="button"
             className="menu-option"
+            disabled={isReplaying}
             onClick={() => handleReplay()}
           >
             Replay
