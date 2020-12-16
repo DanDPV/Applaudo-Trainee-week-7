@@ -1,9 +1,9 @@
 /* eslint import/prefer-default-export: 0 */
 
-import ITicTacToeSquareState from 'interfaces/ITicTacToeSquareState';
+import TicTacToeSquareType from 'types/TicTacToeSquareType';
 
 // Calculate winner in a tic tac toe match
-function calculateTicTacToeWinner(squares: ITicTacToeSquareState[]) {
+function calculateTicTacToeWinner(squares: TicTacToeSquareType[]) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -17,9 +17,9 @@ function calculateTicTacToeWinner(squares: ITicTacToeSquareState[]) {
   for (let i = 0; i < lines.length; i += 1) {
     const [a, b, c] = lines[i];
     if (
-      squares[a].value
-      && squares[a].value === squares[b].value
-      && squares[a].value === squares[c].value
+      squares[a]
+      && squares[a] === squares[b]
+      && squares[a] === squares[c]
     ) {
       return squares[a];
     }
