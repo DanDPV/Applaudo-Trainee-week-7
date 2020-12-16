@@ -46,7 +46,7 @@ const TicTacToeMenu = ({
       <div className="menu-container">
         <button
           type="button"
-          className="menu-option"
+          className="ttt-menu-button lined thick"
           disabled={isDisabledPrevious || isReplaying}
           onClick={() => getPreviousValue(+1)}
         >
@@ -54,7 +54,7 @@ const TicTacToeMenu = ({
         </button>
         <button
           type="button"
-          className="menu-option"
+          className="ttt-menu-button lined thick"
           disabled={isDisabledNext || isReplaying}
           onClick={() => getPreviousValue(-1)}
         >
@@ -62,7 +62,7 @@ const TicTacToeMenu = ({
         </button>
         <button
           type="button"
-          className="menu-option"
+          className="ttt-menu-button lined thick"
           disabled={isDisabledNext || isReplaying}
           onClick={() => handleResume()}
         >
@@ -73,7 +73,7 @@ const TicTacToeMenu = ({
       <div className="menu-container">
         <button
           type="button"
-          className="menu-option"
+          className="ttt-menu-button lined thick"
           disabled={isReplaying}
           onClick={() => handleReset()}
         >
@@ -85,7 +85,7 @@ const TicTacToeMenu = ({
         <div className="menu-container">
           <button
             type="button"
-            className="menu-option"
+            className="ttt-menu-button lined thick"
             disabled={isReplaying}
             onClick={() => handleReplay()}
           >
@@ -95,7 +95,7 @@ const TicTacToeMenu = ({
       )}
 
       <div>
-        <p>Next to move:</p>
+        <p className="next-to-move-header">Next to move:</p>
         <span
           className="next-to-move"
           style={{
