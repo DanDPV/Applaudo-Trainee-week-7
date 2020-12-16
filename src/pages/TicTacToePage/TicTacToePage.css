@@ -1,0 +1,21 @@
+.tic-tac-toe-messages {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.tic-tac-toe-messages > h5 {
+    margin-bottom: 10px;
+}
+
+.tic-tac-toe-is-traveling {
+    color: grey;
+}
+
+.tic-tac-toe-winner {
+    font-size: x-large;
+    color: green;
+}
+
+.tic-tac-toe-error{
+    color: red;
+}
