@@ -2,13 +2,15 @@
 import TicTacToeBoard from 'components/TicTacToeBoard/TicTacToeBoard';
 import TicTacToeMenu from 'components/TicTacToeMenu/TicTacToeMenu';
 import useTimeMachine from 'hooks/useTimeMachine';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TicTacToeSquareType from 'types/TicTacToeSquareType';
 import { calculateTicTacToeWinner } from 'utils/utils';
 
 const TicTacToePage = () => {
   const size = 9;
   const initGameValues = Array(size).fill(null) as TicTacToeSquareType[];
+  const [winner, setWinner] = useState<TicTacToeSquareType>();
+  const [error, setError] = useState<string>();
   const [currentPosition, setCurrentPosition] = useState<number>(0);
   const [xIsNext, setXIsNext] = useState<boolean>(true);
   const [isTraveling, setIsTraveling] = useState<boolean>(false);
@@ -62,9 +64,20 @@ const TicTacToePage = () => {
     setXIsNext(true);
   };
 
+  useEffect(() => {
+    if (calculateTicTacToeWinner(historySquares)) {
+      setWinner(calculateTicTacToeWinner(historySquares));
+    }
+  }, [historySquares]);
+
   return (
     <div className="page-content">
       <h1>Tic Tac Toe</h1>
+      <div className="tic-tac-toe-messages">
+        <h5>{isTraveling ? 'You are now traveling in time' : 'You are currently in present'}</h5>
+        {winner && <h5>{`The winner is: ${winner}`}</h5>}
+        {error && <h5>{error}</h5>}
+      </div>
       <div className="container">
         <div className="board">
           <TicTacToeBoard
