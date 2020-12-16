@@ -115,6 +115,7 @@ const TicTacToePage = () => {
         {error && !isReplaying && (
           <h5 className="tic-tac-toe-error">{error}</h5>
         )}
+        {isReplaying && <h5>Replaying...</h5>}
       </div>
       <div className="container">
         <div className="board">
