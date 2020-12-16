@@ -1,3 +1,40 @@
+.ttt-menu-button {
+  background: transparent;
+  padding: 0.5rem 0.5rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
+  background-color: brown;
+  font-family: 'Architects Daughter', cursive;
+  color: white;
+
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius: 15px 255px;
+}
+
+.ttt-menu-button:disabled {
+  background-color: rgb(95, 95, 95);
+}
+
+.ttt-menu-button:disabled:hover {
+  background-color: rgb(95, 95, 95);
+  cursor: not-allowed;
+}
+
+.ttt-menu-button:hover {
+  box-shadow: 2px 8px 4px -6px hsla(0, 0%, 0%, 0.3);
+  background-color: #d30000;
+}
+
+.ttt-menu-button.lined.thick {
+  border: solid 3px #41403e;
+}
+
+.next-to-move-header {
+  font-family: 'Architects Daughter', cursive;
+}
+
 .next-to-move {
   font-family: 'Cabin Sketch', cursive;
   font-size: 150px;
