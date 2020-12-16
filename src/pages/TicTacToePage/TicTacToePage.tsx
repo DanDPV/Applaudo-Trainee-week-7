@@ -20,14 +20,17 @@ const TicTacToePage = () => {
   const [, getPreviousValue, timeLength, reset] = useTimeMachine(historySquares);
 
   const handleClick = (position: number) => {
+    setError('');
     if (!isTraveling) {
       const newSquares = historySquares.slice();
 
       if (newSquares) {
         if (calculateTicTacToeWinner(squares)) {
+          setError('The game has ended');
           return;
         }
         if (squares[position]) {
+          setError('That position is already taken');
           return;
         }
 
@@ -36,6 +39,8 @@ const TicTacToePage = () => {
         setSquares(newSquares);
         setHistorySquares(newSquares);
       }
+    } else {
+      setError('You can not alter time events!');
     }
   };
 
