@@ -25,7 +25,7 @@ const TicTacToeBoardButton = ({
     }}
     onClick={() => handleClick(position)}
   >
-    {' '}
+    {checked}
   </button>
 );
 
