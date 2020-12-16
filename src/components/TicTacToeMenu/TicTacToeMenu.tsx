@@ -8,6 +8,7 @@ interface ITicTacToeMenu {
   xIsNext: boolean;
   getPreviousValue(step: number): void;
   handleResume(): void;
+  handleReset(): void;
 }
 
 const TicTacToeMenu = ({
@@ -16,6 +17,7 @@ const TicTacToeMenu = ({
   xIsNext,
   getPreviousValue,
   handleResume,
+  handleReset,
 }: ITicTacToeMenu) => {
   const [isDisabledPrevious, setIsDisabledPrevious] = useState<boolean>(true);
   const [isDisabledNext, setIsDisabledNext] = useState<boolean>(true);
@@ -58,6 +60,16 @@ const TicTacToeMenu = ({
           onClick={() => handleResume()}
         >
           Resume
+        </button>
+      </div>
+
+      <div className="menu-container">
+        <button
+          type="button"
+          className="menu-option"
+          onClick={() => handleReset()}
+        >
+          Reset
         </button>
       </div>
 
