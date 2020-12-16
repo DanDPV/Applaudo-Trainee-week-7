@@ -7,6 +7,11 @@ body {
   margin: 50px 15%;
 }
 
+.time-machine-messages {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -14,7 +19,7 @@ body {
 }
 
 .board {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 @media only screen and (max-width: 900px) {
