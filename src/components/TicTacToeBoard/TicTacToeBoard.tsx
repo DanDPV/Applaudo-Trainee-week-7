@@ -1,11 +1,11 @@
 /* eslint no-unused-vars: 0 */
 import React, { useState } from 'react';
 import TicTacToeBoardButton from 'components/TicTacToeBoardButton/TicTacToeBoardButton';
-import ITicTacToeSquareState from 'interfaces/ITicTacToeSquareState';
+import TicTacToeSquareType from 'types/TicTacToeSquareType';
 import 'components/TicTacToeBoard/TicTacToeBoard.css';
 
 interface ITicTacToeBoard {
-  squares: ITicTacToeSquareState[];
+  squares: TicTacToeSquareType[];
   isTraveling: boolean;
   handleClick(position: number): void;
 }
@@ -17,11 +17,11 @@ const TicTacToeBoard = ({
 }: ITicTacToeBoard) => (
   <div>
     <div className="tic-tac-toe-board-grid">
-      {squares.map((state: ITicTacToeSquareState, position: number) => (
+      {squares.map((state: TicTacToeSquareType, position: number) => (
         <TicTacToeBoardButton
-          key={state.id}
+          key={position.toString()}
           position={position}
-          checked={state.value}
+          checked={state}
           handleClick={handleClick}
           isTraveling={isTraveling}
         />
