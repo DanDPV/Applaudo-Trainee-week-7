@@ -67,6 +67,8 @@ const TicTacToePage = () => {
     reset();
     setSquares(initGameValues);
     setHistorySquares(initGameValues);
+    setCurrentPosition(0);
+    setIsTraveling(false);
     setXIsNext(true);
     setError('');
     setWinner(undefined);
