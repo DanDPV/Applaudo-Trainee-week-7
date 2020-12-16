@@ -68,6 +68,8 @@ const TicTacToePage = () => {
     setSquares(initGameValues);
     setHistorySquares(initGameValues);
     setXIsNext(true);
+    setError('');
+    setWinner(undefined);
   };
 
   useEffect(() => {
