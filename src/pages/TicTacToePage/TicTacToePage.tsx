@@ -10,7 +10,7 @@ import 'pages/TicTacToePage/TicTacToePage.css';
 const TicTacToePage = () => {
   const size = 9;
   const initGameValues = Array(size).fill(null) as TicTacToeSquareType[];
-  const [winner, setWinner] = useState<TicTacToeSquareType>();
+  const [winner, setWinner] = useState<TicTacToeSquareType | string>();
   const [error, setError] = useState<string>();
   const [currentPosition, setCurrentPosition] = useState<number>(0);
   const [xIsNext, setXIsNext] = useState<boolean>(true);
@@ -25,7 +25,7 @@ const TicTacToePage = () => {
       const newSquares = historySquares.slice();
 
       if (newSquares) {
-        if (calculateTicTacToeWinner(squares)) {
+        if (calculateTicTacToeWinner(squares) || !historySquares.includes(null)) {
           setError('The game has ended');
           return;
         }
@@ -77,6 +77,8 @@ const TicTacToePage = () => {
   useEffect(() => {
     if (calculateTicTacToeWinner(historySquares)) {
       setWinner(calculateTicTacToeWinner(historySquares));
+    } else if (!historySquares.includes(null)) {
+      setWinner('it\'s a tie');
     }
   }, [historySquares]);
 
