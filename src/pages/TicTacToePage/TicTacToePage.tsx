@@ -102,7 +102,7 @@ const TicTacToePage = () => {
 
   return (
     <div className="page-content">
-      <h1>Tic Tac Toe</h1>
+      <h1 className="tic-tac-toe-title">Tic Tac Toe</h1>
       <div className="tic-tac-toe-messages">
         <h5 className="tic-tac-toe-is-traveling">
           {isTraveling
