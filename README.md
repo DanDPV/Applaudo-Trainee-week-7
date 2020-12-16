@@ -1,3 +1,17 @@
+# Time Machine app
+
+Homework for week 7 of Applaudo Studio Trainee program.
+
+You must run the application on a live server with npm start
+
+**Autor:** Vicente Daniel De Paz Velásquez
+
+The live webpage is using Github pages with the follow repository:
+https://github.com/DanDPV/Applaudo-Trainee-week-7
+
+You can see the live webpage using the link:
+https://dandpv.github.io/Applaudo-Trainee-week-7/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
