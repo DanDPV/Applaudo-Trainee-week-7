@@ -1,11 +1,13 @@
 /* eslint no-unused-vars: 0 */
 import React, { useEffect, useState } from 'react';
+import TicTacToeSquareType from 'types/TicTacToeSquareType';
 import 'components/TicTacToeMenu/TicTacToeMenu.css';
 
 interface ITicTacToeMenu {
   currentPosition: number;
   timeLength: number;
   xIsNext: boolean;
+  winner: TicTacToeSquareType | string;
   getPreviousValue(step: number): void;
   handleResume(): void;
   handleReset(): void;
@@ -15,6 +17,7 @@ const TicTacToeMenu = ({
   currentPosition,
   timeLength,
   xIsNext,
+  winner,
   getPreviousValue,
   handleResume,
   handleReset,
@@ -72,6 +75,18 @@ const TicTacToeMenu = ({
           Reset
         </button>
       </div>
+
+      {winner && (
+        <div className="menu-container">
+          <button
+            type="button"
+            className="menu-option"
+            onClick={() => handleReset()}
+          >
+            Replay
+          </button>
+        </div>
+      )}
 
       <div>
         <p>Next to move:</p>
