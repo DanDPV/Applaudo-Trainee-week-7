@@ -6,6 +6,7 @@
   text-align: center;
   display: flex;
   justify-content: center;
+  background-color: white;
 
   border-top-left-radius: 255px 15px;
   border-top-right-radius: 15px 225px;
