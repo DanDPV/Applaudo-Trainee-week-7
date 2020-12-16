@@ -1,21 +1,26 @@
+.tic-tac-toe-title {
+  font-family: 'Architects Daughter', cursive;
+}
+
 .tic-tac-toe-messages {
   margin-top: 20px;
   margin-bottom: 20px;
+  font-family: 'Architects Daughter', cursive;
 }
 
 .tic-tac-toe-messages > h5 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .tic-tac-toe-is-traveling {
-    color: grey;
+  color: grey;
 }
 
 .tic-tac-toe-winner {
-    font-size: x-large;
-    color: green;
+  font-size: x-large;
+  color: green;
 }
 
-.tic-tac-toe-error{
-    color: red;
+.tic-tac-toe-error {
+  color: red;
 }
