@@ -1,12 +1,14 @@
 /* eslint no-unused-vars: 0 */
 import TicTacToeBoard from 'components/TicTacToeBoard/TicTacToeBoard';
+import TicTacToeMenu from 'components/TicTacToeMenu/TicTacToeMenu';
 import useTimeMachine from 'hooks/useTimeMachine';
 import React, { useState } from 'react';
 import TicTacToeSquareType from 'types/TicTacToeSquareType';
 import { calculateTicTacToeWinner } from 'utils/utils';
 
 const TicTacToePage = () => {
-  const initGameValues = Array(9).fill(null) as TicTacToeSquareType[];
+  const size = 9;
+  const initGameValues = Array(size).fill(null) as TicTacToeSquareType[];
   const [currentPosition, setCurrentPosition] = useState<number>(0);
   const [xIsNext, setXIsNext] = useState<boolean>(true);
   const [isTraveling, setIsTraveling] = useState<boolean>(false);
@@ -34,6 +36,25 @@ const TicTacToePage = () => {
     }
   };
 
+  const handleGetPrevious = (step: number) => {
+    const newPosition = currentPosition + step;
+
+    setCurrentPosition(newPosition);
+    if (newPosition !== 0) {
+      setIsTraveling(true);
+    } else {
+      setIsTraveling(false);
+      setHistorySquares(getPreviousValue(newPosition) ?? Array(size).fill(false));
+    }
+    setSquares(getPreviousValue(newPosition) ?? Array(size).fill(false));
+  };
+
+  const handleResume = () => {
+    setCurrentPosition(0);
+    setIsTraveling(false);
+    setSquares(getPreviousValue(0) ?? Array(size).fill(false));
+  };
+
   return (
     <div className="page-content">
       <h1>Tic Tac Toe</h1>
@@ -45,7 +66,14 @@ const TicTacToePage = () => {
             isTraveling={isTraveling}
           />
         </div>
-        <div className="info">menu</div>
+        <div className="info">
+          <TicTacToeMenu
+            getPreviousValue={handleGetPrevious}
+            handleResume={handleResume}
+            currentPosition={currentPosition}
+            timeLength={timeLength}
+          />
+        </div>
       </div>
     </div>
   );
