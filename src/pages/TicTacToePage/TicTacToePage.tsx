@@ -16,6 +16,7 @@ const TicTacToePage = () => {
   const [currentPosition, setCurrentPosition] = useState<number>(0);
   const [xIsNext, setXIsNext] = useState<boolean>(true);
   const [isTraveling, setIsTraveling] = useState<boolean>(false);
+  const [isReplaying, setIsReplaying] = useState<boolean>(false);
   const [squares, setSquares] = useState<TicTacToeSquareType[]>(initGameValues);
   const [historySquares, setHistorySquares] = useState<TicTacToeSquareType[]>(initGameValues);
   const [, getPreviousValue, timeLength, reset] = useTimeMachine(historySquares);
@@ -77,6 +78,7 @@ const TicTacToePage = () => {
 
   const handleReplay = async () => {
     setIsTraveling(true);
+    setIsReplaying(true);
     const firstPos = timeLength - 1;
     setCurrentPosition(firstPos);
     setSquares(getPreviousValue(firstPos) ?? Array(size).fill(false));
@@ -87,6 +89,7 @@ const TicTacToePage = () => {
       });
     }
     setIsTraveling(false);
+    setIsReplaying(false);
   };
 
   useEffect(() => {
@@ -101,9 +104,17 @@ const TicTacToePage = () => {
     <div className="page-content">
       <h1>Tic Tac Toe</h1>
       <div className="tic-tac-toe-messages">
-        <h5 className="tic-tac-toe-is-traveling">{isTraveling ? 'You are now traveling in time' : 'You are currently in present'}</h5>
-        {winner && <h5 className="tic-tac-toe-winner">{`The winner is: ${winner}`}</h5>}
-        {error && <h5 className="tic-tac-toe-error">{error}</h5>}
+        <h5 className="tic-tac-toe-is-traveling">
+          {isTraveling
+            ? 'You are now traveling in time'
+            : 'You are currently in present'}
+        </h5>
+        {winner && !isReplaying && (
+          <h5 className="tic-tac-toe-winner">{`The winner is: ${winner}`}</h5>
+        )}
+        {error && !isReplaying && (
+          <h5 className="tic-tac-toe-error">{error}</h5>
+        )}
       </div>
       <div className="container">
         <div className="board">
@@ -123,6 +134,7 @@ const TicTacToePage = () => {
             timeLength={timeLength}
             xIsNext={xIsNext}
             winner={winner}
+            isReplaying={isReplaying}
           />
         </div>
       </div>
