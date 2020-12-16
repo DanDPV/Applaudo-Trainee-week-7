@@ -6,11 +6,11 @@ You must run the application on a live server with npm start
 
 **Autor:** Vicente Daniel De Paz Velásquez
 
-The live webpage is using Github pages with the follow repository:
-https://github.com/DanDPV/Applaudo-Trainee-week-7
-
 You can see the live webpage using the link:
 https://dandpv.github.io/Applaudo-Trainee-week-7/
+
+The live webpage is using Github pages with the follow repository:
+https://github.com/DanDPV/Applaudo-Trainee-week-7
 
 # Getting Started with Create React App
 
