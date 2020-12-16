@@ -10,7 +10,7 @@ import 'pages/TicTacToePage/TicTacToePage.css';
 const TicTacToePage = () => {
   const size = 9;
   const initGameValues = Array(size).fill(null) as TicTacToeSquareType[];
-  const [winner, setWinner] = useState<TicTacToeSquareType | string>();
+  const [winner, setWinner] = useState<TicTacToeSquareType | string>(null);
   const [error, setError] = useState<string>();
   const [currentPosition, setCurrentPosition] = useState<number>(0);
   const [xIsNext, setXIsNext] = useState<boolean>(true);
@@ -71,7 +71,7 @@ const TicTacToePage = () => {
     setIsTraveling(false);
     setXIsNext(true);
     setError('');
-    setWinner(undefined);
+    setWinner(null);
   };
 
   useEffect(() => {
@@ -106,6 +106,7 @@ const TicTacToePage = () => {
             currentPosition={currentPosition}
             timeLength={timeLength}
             xIsNext={xIsNext}
+            winner={winner}
           />
         </div>
       </div>
