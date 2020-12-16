@@ -10,25 +10,24 @@ interface ITicTacToeBoard {
   handleClick(position: number): void;
 }
 
-const TicTacToeBoard = ({ squares, isTraveling, handleClick }: ITicTacToeBoard) => {
-  const [color] = useState<string>('gray');
-
-  return (
-    <div>
-      <div className="tic-tac-toe-board-grid">
-        {squares.map((state: ITicTacToeSquareState, position: number) => (
-          <TicTacToeBoardButton
-            key={state.id}
-            position={position}
-            bgColor={color}
-            checked={state.value}
-            handleClick={handleClick}
-            isTraveling={isTraveling}
-          />
-        ))}
-      </div>
+const TicTacToeBoard = ({
+  squares,
+  isTraveling,
+  handleClick,
+}: ITicTacToeBoard) => (
+  <div>
+    <div className="tic-tac-toe-board-grid">
+      {squares.map((state: ITicTacToeSquareState, position: number) => (
+        <TicTacToeBoardButton
+          key={state.id}
+          position={position}
+          checked={state.value}
+          handleClick={handleClick}
+          isTraveling={isTraveling}
+        />
+      ))}
     </div>
-  );
-};
+  </div>
+);
 
 export default TicTacToeBoard;
