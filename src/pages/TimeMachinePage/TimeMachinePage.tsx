@@ -43,9 +43,11 @@ const TimeMachinePage = () => {
   return (
     <div className="page-content">
       <h1>Time machine</h1>
-      <h5>
-        {isTraveling ? 'You are now traveling in time' : 'You are currently in present'}
-      </h5>
+      <div className="time-machine-messages">
+        <h5>
+          {isTraveling ? 'You are now traveling in time' : 'You are currently in present'}
+        </h5>
+      </div>
       <div className="container">
         <div className="board">
           <TimeMachineBoard
