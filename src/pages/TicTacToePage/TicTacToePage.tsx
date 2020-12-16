@@ -72,6 +72,7 @@ const TicTacToePage = () => {
             handleResume={handleResume}
             currentPosition={currentPosition}
             timeLength={timeLength}
+            xIsNext={xIsNext}
           />
         </div>
       </div>
