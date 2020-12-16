@@ -1,5 +1,3 @@
-/* eslint import/prefer-default-export: 0 */
-
 import TicTacToeSquareType from 'types/TicTacToeSquareType';
 
 // Calculate winner in a tic tac toe match
@@ -27,4 +25,6 @@ function calculateTicTacToeWinner(squares: TicTacToeSquareType[]) {
   return null;
 }
 
-export { calculateTicTacToeWinner };
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+export { calculateTicTacToeWinner, sleep };
