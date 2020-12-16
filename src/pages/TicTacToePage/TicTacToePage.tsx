@@ -1,10 +1,11 @@
 /* eslint no-unused-vars: 0 */
+/* eslint no-await-in-loop: 0 */
 import TicTacToeBoard from 'components/TicTacToeBoard/TicTacToeBoard';
 import TicTacToeMenu from 'components/TicTacToeMenu/TicTacToeMenu';
 import useTimeMachine from 'hooks/useTimeMachine';
 import React, { useEffect, useState } from 'react';
 import TicTacToeSquareType from 'types/TicTacToeSquareType';
-import { calculateTicTacToeWinner } from 'utils/utils';
+import { calculateTicTacToeWinner, sleep } from 'utils/utils';
 import 'pages/TicTacToePage/TicTacToePage.css';
 
 const TicTacToePage = () => {
@@ -74,6 +75,20 @@ const TicTacToePage = () => {
     setWinner(null);
   };
 
+  const handleReplay = async () => {
+    setIsTraveling(true);
+    const firstPos = timeLength - 1;
+    setCurrentPosition(firstPos);
+    setSquares(getPreviousValue(firstPos) ?? Array(size).fill(false));
+    for (let position = firstPos - 1; position >= 0; position -= 1) {
+      await sleep(500).then(() => {
+        setCurrentPosition(position);
+        setSquares(getPreviousValue(position) ?? Array(size).fill(false));
+      });
+    }
+    setIsTraveling(false);
+  };
+
   useEffect(() => {
     if (calculateTicTacToeWinner(historySquares)) {
       setWinner(calculateTicTacToeWinner(historySquares));
@@ -103,6 +118,7 @@ const TicTacToePage = () => {
             getPreviousValue={handleGetPrevious}
             handleResume={handleResume}
             handleReset={handleReset}
+            handleReplay={handleReplay}
             currentPosition={currentPosition}
             timeLength={timeLength}
             xIsNext={xIsNext}
