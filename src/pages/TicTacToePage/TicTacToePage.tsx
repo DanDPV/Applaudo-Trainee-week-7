@@ -14,7 +14,7 @@ const TicTacToePage = () => {
   const [isTraveling, setIsTraveling] = useState<boolean>(false);
   const [squares, setSquares] = useState<TicTacToeSquareType[]>(initGameValues);
   const [historySquares, setHistorySquares] = useState<TicTacToeSquareType[]>(initGameValues);
-  const [, getPreviousValue, timeLength] = useTimeMachine(historySquares);
+  const [, getPreviousValue, timeLength, reset] = useTimeMachine(historySquares);
 
   const handleClick = (position: number) => {
     if (!isTraveling) {
@@ -55,6 +55,13 @@ const TicTacToePage = () => {
     setSquares(getPreviousValue(0) ?? Array(size).fill(false));
   };
 
+  const handleReset = () => {
+    reset();
+    setSquares(initGameValues);
+    setHistorySquares(initGameValues);
+    setXIsNext(true);
+  };
+
   return (
     <div className="page-content">
       <h1>Tic Tac Toe</h1>
@@ -70,6 +77,7 @@ const TicTacToePage = () => {
           <TicTacToeMenu
             getPreviousValue={handleGetPrevious}
             handleResume={handleResume}
+            handleReset={handleReset}
             currentPosition={currentPosition}
             timeLength={timeLength}
             xIsNext={xIsNext}
