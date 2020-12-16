@@ -4,7 +4,6 @@ import 'components/TicTacToeBoardButton/TicTacToeBoardButton.css';
 
 interface ITicTacToeBoardButton {
   position: number;
-  bgColor: string;
   checked: 'x' | 'o' | null;
   isTraveling: boolean;
   handleClick(position: number): void;
@@ -12,7 +11,6 @@ interface ITicTacToeBoardButton {
 
 const TicTacToeBoardButton = ({
   position,
-  bgColor,
   checked,
   isTraveling,
   handleClick,
