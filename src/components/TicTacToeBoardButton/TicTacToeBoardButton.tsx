@@ -22,6 +22,7 @@ const TicTacToeBoardButton = ({
     className="tic-tac-toe-square dashed thick"
     style={{
       cursor: isTraveling ? 'not-allowed' : 'pointer',
+      color: (checked === 'x') ? 'red' : 'blue',
     }}
     onClick={() => handleClick(position)}
   >
