@@ -1,6 +1,6 @@
 import TicTacToeSquareType from 'types/TicTacToeSquareType';
 
-interface ticTacToeReducerState {
+interface ITicTacToeReducerState {
   winner: TicTacToeSquareType | string;
   error: string;
   currentPosition: number;
@@ -11,4 +11,4 @@ interface ticTacToeReducerState {
   historySquares: TicTacToeSquareType[];
 }
 
-export default ticTacToeReducerState;
+export default ITicTacToeReducerState;
