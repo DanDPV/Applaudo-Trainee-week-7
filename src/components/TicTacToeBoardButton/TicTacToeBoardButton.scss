@@ -7,27 +7,26 @@
   display: flex;
   justify-content: center;
   background-color: white;
-
   border-top-left-radius: 255px 15px;
   border-top-right-radius: 15px 225px;
   border-bottom-right-radius: 225px 15px;
   border-bottom-left-radius: 15px 255px;
-}
 
-.tic-tac-toe-square:before {
-  content: '';
-  display: block;
-  height: 0;
-  width: 0;
-  padding-bottom: calc(11 / 16 * 80%);
-}
+  &:before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    padding-bottom: calc(11 / 16 * 80%);
+  }
 
-.tic-tac-toe-square:hover {
-  box-shadow: 2px 8px 4px -6px hsla(0, 0%, 0%, 0.3);
-}
+  &:hover {
+    box-shadow: 2px 8px 4px -6px hsla(0, 0%, 0%, 0.3);
+  }
 
-.tic-tac-toe-square.dashed.thick {
-  border: dashed 3px #41403e;
+  &.dashed.thick {
+    border: dashed 3px #41403e;
+  }
 }
 
 @media only screen and (max-width: 900px) {
