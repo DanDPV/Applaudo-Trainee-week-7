@@ -4,11 +4,11 @@ import TicTacToeSquareType from 'types/TicTacToeSquareType';
 import 'components/TicTacToeMenu/TicTacToeMenu.css';
 
 interface ITicTacToeMenu {
-  currentPosition: number;
+  currentPosition: number | undefined;
   timeLength: number;
-  xIsNext: boolean;
-  isReplaying: boolean;
-  winner: TicTacToeSquareType | string;
+  xIsNext: boolean | undefined;
+  isReplaying: boolean | undefined;
+  winner: TicTacToeSquareType | string | undefined;
   getPreviousValue(step: number): void;
   handleResume(): void;
   handleReset(): void;
