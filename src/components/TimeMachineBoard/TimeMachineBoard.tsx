@@ -4,8 +4,8 @@ import BoardButton from 'components/BoardButton/BoardButton';
 import 'components/TimeMachineBoard/TimeMachineBoard.css';
 
 interface ITimeMachineBoard {
-  squares: boolean[];
-  isTraveling: boolean;
+  squares: boolean[] | undefined;
+  isTraveling: boolean | undefined;
   handleClick(position: number): void;
 }
 
@@ -32,7 +32,7 @@ const TimeMachineBoard = ({ squares, isTraveling, handleClick }: ITimeMachineBoa
   return (
     <div>
       <div className="board-grid">
-        {squares.map((checked: boolean, position: number) => (
+        {squares && squares.map((checked: boolean, position: number) => (
           <BoardButton
             key={colors[position]}
             position={position}
