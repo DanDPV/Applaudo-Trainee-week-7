@@ -3,100 +3,180 @@
 import TicTacToeBoard from 'components/TicTacToeBoard/TicTacToeBoard';
 import TicTacToeMenu from 'components/TicTacToeMenu/TicTacToeMenu';
 import useTimeMachine from 'hooks/useTimeMachine';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, Reducer } from 'react';
 import TicTacToeSquareType from 'types/TicTacToeSquareType';
 import { calculateTicTacToeWinner, sleep } from 'utils/utils';
+import ticTacToeReducer from 'reducers/ticTacToeReducer/ticTacToeReducer';
+import ticTacToeInitialState from 'reducers/ticTacToeReducer/ticTacToeInitialState';
+import ITicTacToeReducerState from 'reducers/ticTacToeReducer/ITicTacToeReducerState';
+import ticTacToeActionsTypes from 'reducers/ticTacToeReducer/ticTacToeActionsTypes';
 import 'pages/TicTacToePage/TicTacToePage.css';
 
 const TicTacToePage = () => {
-  const size = 9;
-  const initGameValues = Array(size).fill(null) as TicTacToeSquareType[];
-  const [winner, setWinner] = useState<TicTacToeSquareType | string>(null);
-  const [error, setError] = useState<string>();
-  const [currentPosition, setCurrentPosition] = useState<number>(0);
-  const [xIsNext, setXIsNext] = useState<boolean>(true);
-  const [isTraveling, setIsTraveling] = useState<boolean>(false);
-  const [isReplaying, setIsReplaying] = useState<boolean>(false);
-  const [squares, setSquares] = useState<TicTacToeSquareType[]>(initGameValues);
-  const [historySquares, setHistorySquares] = useState<TicTacToeSquareType[]>(initGameValues);
+  const [state, dispatch] = useReducer<
+    Reducer<ITicTacToeReducerState, {
+      type: ticTacToeActionsTypes;
+      payload: {
+        winner?: TicTacToeSquareType | string;
+        error?: string;
+        currentPosition?: number;
+        xIsNext?: boolean;
+        isTraveling?: boolean;
+        isReplaying?: boolean;
+        squares?: TicTacToeSquareType[];
+      };
+    }>
+  >(ticTacToeReducer, ticTacToeInitialState);
+  const {
+    winner,
+    error,
+    currentPosition,
+    xIsNext,
+    isTraveling,
+    isReplaying,
+    squares,
+    historySquares,
+  } = state;
   const [, getPreviousValue, timeLength, reset] = useTimeMachine(historySquares);
 
   const handleClick = (position: number) => {
-    setError('');
+    dispatch({
+      type: ticTacToeActionsTypes.SET_ERROR,
+      payload: { error: '' },
+    });
     if (!isTraveling) {
-      const newSquares = historySquares.slice();
+      if (historySquares) {
+        const newSquares = historySquares.slice();
 
-      if (newSquares) {
-        if (calculateTicTacToeWinner(squares) || !historySquares.includes(null)) {
-          setError('The game has ended');
-          return;
-        }
-        if (squares[position]) {
-          setError('That position is already taken');
-          return;
-        }
+        if (newSquares) {
+          if (calculateTicTacToeWinner(historySquares) || !historySquares.includes(null)) {
+            dispatch({
+              type: ticTacToeActionsTypes.SET_ERROR,
+              payload: { error: 'The game has ended' },
+            });
+            return;
+          }
+          if (historySquares[position]) {
+            dispatch({
+              type: ticTacToeActionsTypes.SET_ERROR,
+              payload: { error: 'That position is already taken' },
+            });
+            return;
+          }
 
-        newSquares[position] = xIsNext ? 'x' : 'o';
-        setXIsNext(!xIsNext);
-        setSquares(newSquares);
-        setHistorySquares(newSquares);
+          newSquares[position] = xIsNext ? 'x' : 'o';
+          dispatch({
+            type: ticTacToeActionsTypes.SET_NEXT_PLAY,
+            payload: {
+              xIsNext: !xIsNext,
+              squares: newSquares,
+            },
+          });
+        }
       }
     } else {
-      setError('You can not alter time events!');
+      dispatch({
+        type: ticTacToeActionsTypes.SET_ERROR,
+        payload: { error: 'You can not alter time events!' },
+      });
     }
   };
 
   const handleGetPrevious = (step: number) => {
-    const newPosition = currentPosition + step;
+    if (currentPosition !== undefined) {
+      const newPosition = currentPosition + step;
+      let newIsTraveling = false;
 
-    setCurrentPosition(newPosition);
-    if (newPosition !== 0) {
-      setIsTraveling(true);
-    } else {
-      setIsTraveling(false);
-      setHistorySquares(getPreviousValue(newPosition) ?? Array(size).fill(false));
+      if (newPosition !== 0) {
+        newIsTraveling = true;
+      } else {
+        newIsTraveling = false;
+      }
+      dispatch({
+        type: ticTacToeActionsTypes.MOVE_IN_TIME,
+        payload: {
+          currentPosition: newPosition,
+          isTraveling: newIsTraveling,
+          squares: getPreviousValue(newPosition) ?? ticTacToeInitialState.squares,
+        },
+      });
     }
-    setSquares(getPreviousValue(newPosition) ?? Array(size).fill(false));
   };
 
   const handleResume = () => {
-    setCurrentPosition(0);
-    setIsTraveling(false);
-    setSquares(getPreviousValue(0) ?? Array(size).fill(false));
+    dispatch({
+      type: ticTacToeActionsTypes.MOVE_IN_TIME,
+      payload: {
+        currentPosition: 0,
+        isTraveling: false,
+        squares: getPreviousValue(0) ?? ticTacToeInitialState.squares,
+      },
+    });
   };
 
   const handleReset = () => {
     reset();
-    setSquares(initGameValues);
-    setHistorySquares(initGameValues);
-    setCurrentPosition(0);
-    setIsTraveling(false);
-    setXIsNext(true);
-    setError('');
-    setWinner(null);
+    dispatch({
+      type: ticTacToeActionsTypes.RESET,
+      payload: {},
+    });
   };
 
   const handleReplay = async () => {
-    setIsTraveling(true);
-    setIsReplaying(true);
+    dispatch({
+      type: ticTacToeActionsTypes.REPLAY,
+      payload: {
+        isTraveling: true,
+        isReplaying: true,
+      },
+    });
     const firstPos = timeLength - 1;
-    setCurrentPosition(firstPos);
-    setSquares(getPreviousValue(firstPos) ?? Array(size).fill(false));
+    dispatch({
+      type: ticTacToeActionsTypes.MOVE_IN_TIME,
+      payload: {
+        currentPosition: firstPos,
+        isTraveling: true,
+        squares: getPreviousValue(firstPos) ?? ticTacToeInitialState.squares,
+      },
+    });
     for (let position = firstPos - 1; position >= 0; position -= 1) {
       await sleep(500).then(() => {
-        setCurrentPosition(position);
-        setSquares(getPreviousValue(position) ?? Array(size).fill(false));
+        dispatch({
+          type: ticTacToeActionsTypes.MOVE_IN_TIME,
+          payload: {
+            currentPosition: position,
+            isTraveling: true,
+            squares: getPreviousValue(position) ?? ticTacToeInitialState.squares,
+          },
+        });
       });
     }
-    setIsTraveling(false);
-    setIsReplaying(false);
+    dispatch({
+      type: ticTacToeActionsTypes.REPLAY,
+      payload: {
+        isTraveling: false,
+        isReplaying: false,
+      },
+    });
   };
 
   useEffect(() => {
-    if (calculateTicTacToeWinner(historySquares)) {
-      setWinner(calculateTicTacToeWinner(historySquares));
-    } else if (!historySquares.includes(null)) {
-      setWinner('it\'s a tie');
+    if (historySquares) {
+      if (calculateTicTacToeWinner(historySquares)) {
+        dispatch({
+          type: ticTacToeActionsTypes.SET_WINNER,
+          payload: {
+            winner: calculateTicTacToeWinner(historySquares),
+          },
+        });
+      } else if (!historySquares.includes(null)) {
+        dispatch({
+          type: ticTacToeActionsTypes.SET_WINNER,
+          payload: {
+            winner: 'it\'s a tie',
+          },
+        });
+      }
     }
   }, [historySquares]);
 
