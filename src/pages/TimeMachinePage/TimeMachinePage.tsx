@@ -6,6 +6,7 @@ import ITimeMachineReducerState from 'reducers/timeMachineReducer/ITimeMachineRe
 import ITimeMachineReducerAction from 'reducers/timeMachineReducer/ITimeMachineReducerAction';
 import timeMachineReducer from 'reducers/timeMachineReducer/timeMachineReducer';
 import timeMachineInitialState from 'reducers/timeMachineReducer/timeMachineInitialState';
+import timeMachineActionsTypes from 'reducers/timeMachineReducer/timeMachineActionsTypes';
 import 'pages/TimeMachinePage/TimeMachinePage.css';
 
 const TimeMachinePage = () => {
@@ -22,10 +23,16 @@ const TimeMachinePage = () => {
 
   const handleClick = (i: number) => {
     if (!isTraveling) {
-      const newSquares = Array(size * size).fill(false) as boolean[];
-      newSquares[i] = true;
-      setSquares(newSquares);
-      setHistorySquares(newSquares);
+      const newSquares = timeMachineInitialState.squares;
+      if (newSquares) {
+        newSquares[i] = true;
+        dispatch({
+          type: timeMachineActionsTypes.SET_NEXT_OPTION,
+          payload: {
+            squares: newSquares,
+          },
+        });
+      }
     }
   };
 
