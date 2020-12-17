@@ -37,16 +37,25 @@ const TimeMachinePage = () => {
   };
 
   const handleGetPrevious = (step: number) => {
-    const newPosition = currentPosition + step;
+    if (currentPosition !== undefined) {
+      const newPosition = currentPosition + step;
+      let newIsTraveling = false;
 
-    setCurrentPosition(newPosition);
-    if (newPosition !== 0) {
-      setIsTraveling(true);
-    } else {
-      setIsTraveling(false);
-      setHistorySquares(getPreviousValue(newPosition) ?? Array(size * size).fill(false));
+      if (newPosition !== 0) {
+        newIsTraveling = true;
+      } else {
+        newIsTraveling = false;
+      }
+
+      dispatch({
+        type: timeMachineActionsTypes.MOVE_IN_TIME,
+        payload: {
+          currentPosition: newPosition,
+          isTraveling: newIsTraveling,
+          squares: getPreviousValue(newPosition) ?? timeMachineInitialState.squares,
+        },
+      });
     }
-    setSquares(getPreviousValue(newPosition) ?? Array(size * size).fill(false));
   };
 
   const handleResume = () => {
