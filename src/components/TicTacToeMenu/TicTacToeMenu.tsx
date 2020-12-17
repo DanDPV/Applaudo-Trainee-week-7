@@ -94,17 +94,19 @@ const TicTacToeMenu = ({
         </div>
       )}
 
-      <div>
-        <p className="next-to-move-header">Next to move:</p>
-        <span
-          className="next-to-move"
-          style={{
-            color: xIsNext ? 'red' : 'blue',
-          }}
-        >
-          {xIsNext ? 'x' : 'o'}
-        </span>
-      </div>
+      {!winner && (
+        <div>
+          <p className="next-to-move-header">Next to move:</p>
+          <span
+            className="next-to-move"
+            style={{
+              color: xIsNext ? 'red' : 'blue',
+            }}
+          >
+            {xIsNext ? 'x' : 'o'}
+          </span>
+        </div>
+      )}
     </>
   );
 };
