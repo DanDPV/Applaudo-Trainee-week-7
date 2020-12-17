@@ -4,29 +4,19 @@ import TicTacToeBoard from 'components/TicTacToeBoard/TicTacToeBoard';
 import TicTacToeMenu from 'components/TicTacToeMenu/TicTacToeMenu';
 import useTimeMachine from 'hooks/useTimeMachine';
 import React, { useEffect, useReducer, Reducer } from 'react';
-import TicTacToeSquareType from 'types/TicTacToeSquareType';
 import { calculateTicTacToeWinner, sleep } from 'utils/utils';
 import ticTacToeReducer from 'reducers/ticTacToeReducer/ticTacToeReducer';
 import ticTacToeInitialState from 'reducers/ticTacToeReducer/ticTacToeInitialState';
 import ITicTacToeReducerState from 'reducers/ticTacToeReducer/ITicTacToeReducerState';
+import ITicTacToeReducerAction from 'reducers/ticTacToeReducer/ITicTacToeReducerAction';
 import ticTacToeActionsTypes from 'reducers/ticTacToeReducer/ticTacToeActionsTypes';
 import 'pages/TicTacToePage/TicTacToePage.css';
 
 const TicTacToePage = () => {
   const [state, dispatch] = useReducer<
-    Reducer<ITicTacToeReducerState, {
-      type: ticTacToeActionsTypes;
-      payload: {
-        winner?: TicTacToeSquareType | string;
-        error?: string;
-        currentPosition?: number;
-        xIsNext?: boolean;
-        isTraveling?: boolean;
-        isReplaying?: boolean;
-        squares?: TicTacToeSquareType[];
-      };
-    }>
+    Reducer<ITicTacToeReducerState, ITicTacToeReducerAction>
   >(ticTacToeReducer, ticTacToeInitialState);
+
   const {
     winner,
     error,
@@ -37,6 +27,7 @@ const TicTacToePage = () => {
     squares,
     historySquares,
   } = state;
+
   const [, getPreviousValue, timeLength, reset] = useTimeMachine(historySquares);
 
   const handleClick = (position: number) => {
