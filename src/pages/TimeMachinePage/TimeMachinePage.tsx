@@ -59,9 +59,14 @@ const TimeMachinePage = () => {
   };
 
   const handleResume = () => {
-    setCurrentPosition(0);
-    setIsTraveling(false);
-    setSquares(getPreviousValue(0) ?? Array(size * size).fill(false));
+    dispatch({
+      type: timeMachineActionsTypes.MOVE_IN_TIME,
+      payload: {
+        currentPosition: 0,
+        isTraveling: false,
+        squares: getPreviousValue(0) ?? timeMachineInitialState.squares,
+      },
+    });
   };
 
   return (
