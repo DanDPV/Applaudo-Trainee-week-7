@@ -1,7 +1,7 @@
 /* eslint no-unused-vars: 0 */
 import React from 'react';
 import TicTacToeSquareType from 'types/TicTacToeSquareType';
-import 'components/TicTacToeBoardButton/TicTacToeBoardButton.css';
+import 'components/TicTacToeBoardButton/TicTacToeBoardButton.scss';
 
 interface ITicTacToeBoardButton {
   position: number;
