@@ -1,0 +1,6 @@
+.board-grid {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(4, minmax(50px, 1fr));
+  grid-auto-rows: minmax(50px, auto);
+}
