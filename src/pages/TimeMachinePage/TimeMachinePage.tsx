@@ -10,6 +10,8 @@ import timeMachineActionsTypes from 'reducers/timeMachineReducer/timeMachineActi
 import 'pages/TimeMachinePage/TimeMachinePage.css';
 
 const TimeMachinePage = () => {
+  const size = 4;
+  const initTimeMachineValues = Array(size * size).fill(false) as boolean[];
   const [state, dispatch] = useReducer<
     Reducer<ITimeMachineReducerState, ITimeMachineReducerAction>
   >(timeMachineReducer, timeMachineInitialState);
@@ -23,7 +25,7 @@ const TimeMachinePage = () => {
 
   const handleClick = (i: number) => {
     if (!isTraveling) {
-      const newSquares = timeMachineInitialState.squares;
+      const newSquares = initTimeMachineValues;
       if (newSquares) {
         newSquares[i] = true;
         dispatch({
@@ -52,7 +54,7 @@ const TimeMachinePage = () => {
         payload: {
           currentPosition: newPosition,
           isTraveling: newIsTraveling,
-          squares: getPreviousValue(newPosition) ?? timeMachineInitialState.squares,
+          squares: getPreviousValue(newPosition) ?? initTimeMachineValues,
         },
       });
     }
@@ -64,7 +66,7 @@ const TimeMachinePage = () => {
       payload: {
         currentPosition: 0,
         isTraveling: false,
-        squares: getPreviousValue(0) ?? timeMachineInitialState.squares,
+        squares: getPreviousValue(0) ?? initTimeMachineValues,
       },
     });
   };
