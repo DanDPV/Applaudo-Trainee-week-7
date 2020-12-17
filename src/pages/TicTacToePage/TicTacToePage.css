@@ -1,3 +1,22 @@
+body {
+  background-color: #e4e6eb;
+}
+
+.page-content {
+  text-align: center;
+  margin: 50px 15%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.board {
+  flex-grow: 1;
+}
+
 .tic-tac-toe-title {
   font-family: 'Architects Daughter', cursive;
 }
@@ -23,4 +42,11 @@
 
 .tic-tac-toe-error {
   color: red;
+}
+
+@media only screen and (max-width: 900px) {
+  .page-content {
+    text-align: center;
+    margin: 50px 5%;
+  }
 }
