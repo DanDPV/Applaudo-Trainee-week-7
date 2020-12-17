@@ -4,7 +4,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import RouteNames from 'routers/RouteNames';
-import 'components/Navbar/Navbar.css';
+import 'components/Navbar/Navbar.scss';
 
 const Navbar = () => (
   <nav>
