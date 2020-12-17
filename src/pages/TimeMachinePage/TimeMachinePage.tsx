@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useReducer, Reducer } from 'react';
 import TimeMachineBoard from 'components/TimeMachineBoard/TimeMachineBoard';
 import TimeMachineMenu from 'components/TimeMachineMenu/TimeMachineMenu';
 import useTimeMachine from 'hooks/useTimeMachine';
+import ITimeMachineReducerState from 'reducers/timeMachineReducer/ITimeMachineReducerState';
+import ITimeMachineReducerAction from 'reducers/timeMachineReducer/ITimeMachineReducerAction';
+import timeMachineReducer from 'reducers/timeMachineReducer/timeMachineReducer';
+import timeMachineInitialState from 'reducers/timeMachineReducer/timeMachineInitialState';
 import 'pages/TimeMachinePage/TimeMachinePage.css';
 
 const TimeMachinePage = () => {
-  const size = 4;
-  const [currentPosition, setCurrentPosition] = useState<number>(0);
-  const [isTraveling, setIsTraveling] = useState<boolean>(false);
-  const [squares, setSquares] = useState<boolean[]>(Array(size * size).fill(false));
-  const [historySquares, setHistorySquares] = useState<boolean[]>(Array(size * size).fill(false));
+  const [state, dispatch] = useReducer<
+    Reducer<ITimeMachineReducerState, ITimeMachineReducerAction>
+  >(timeMachineReducer, timeMachineInitialState);
+  const {
+    currentPosition,
+    isTraveling,
+    squares,
+    historySquares,
+  } = state;
   const [, getPreviousValue, timeLength] = useTimeMachine(historySquares);
 
   const handleClick = (i: number) => {
