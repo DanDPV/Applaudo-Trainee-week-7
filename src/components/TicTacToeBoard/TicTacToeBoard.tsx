@@ -5,8 +5,8 @@ import TicTacToeSquareType from 'types/TicTacToeSquareType';
 import 'components/TicTacToeBoard/TicTacToeBoard.css';
 
 interface ITicTacToeBoard {
-  squares: TicTacToeSquareType[];
-  isTraveling: boolean;
+  squares: TicTacToeSquareType[] | undefined;
+  isTraveling: boolean | undefined;
   handleClick(position: number): void;
 }
 
@@ -17,7 +17,7 @@ const TicTacToeBoard = ({
 }: ITicTacToeBoard) => (
   <div>
     <div className="tic-tac-toe-board-grid">
-      {squares.map((state: TicTacToeSquareType, position: number) => (
+      {squares && squares.map((state: TicTacToeSquareType, position: number) => (
         <TicTacToeBoardButton
           key={position.toString()}
           position={position}
