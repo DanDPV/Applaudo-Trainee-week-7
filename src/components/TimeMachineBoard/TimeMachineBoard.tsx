@@ -1,7 +1,7 @@
 /* eslint no-unused-vars: 0 */
 import React, { useState } from 'react';
 import BoardButton from 'components/BoardButton/BoardButton';
-import 'components/TimeMachineBoard/TimeMachineBoard.css';
+import 'components/TimeMachineBoard/TimeMachineBoard.scss';
 
 interface ITimeMachineBoard {
   squares: boolean[] | undefined;
