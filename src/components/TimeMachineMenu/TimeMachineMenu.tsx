@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import 'components/TimeMachineMenu/TimeMachineMenu.css';
 
 interface ITimeMachineMenu {
-  currentPosition: number;
+  currentPosition: number | undefined;
   timeLength: number;
   getPreviousValue(step: number): void;
   handleResume(): void;
