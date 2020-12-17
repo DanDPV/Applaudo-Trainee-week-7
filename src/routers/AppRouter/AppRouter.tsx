@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
 import RouteNames from 'routers/RouteNames';
 import Navbar from 'components/Navbar/Navbar';
+import 'routers/AppRouter/AppRouter.scss';
 
 const TimeMachinePage = lazy(() => import('pages/TimeMachinePage/TimeMachinePage'));
 const TicTacToePage = lazy(() => import('pages/TicTacToePage/TicTacToePage'));
