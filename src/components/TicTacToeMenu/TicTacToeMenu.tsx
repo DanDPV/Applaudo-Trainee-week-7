@@ -1,7 +1,7 @@
 /* eslint no-unused-vars: 0 */
 import React, { useEffect, useState } from 'react';
 import TicTacToeSquareType from 'types/TicTacToeSquareType';
-import 'components/TicTacToeMenu/TicTacToeMenu.css';
+import 'components/TicTacToeMenu/TicTacToeMenu.scss';
 
 interface ITicTacToeMenu {
   currentPosition: number | undefined;
