@@ -6,7 +6,7 @@ import 'components/TicTacToeBoardButton/TicTacToeBoardButton.css';
 interface ITicTacToeBoardButton {
   position: number;
   checked: TicTacToeSquareType;
-  isTraveling: boolean;
+  isTraveling: boolean | undefined;
   handleClick(position: number): void;
 }
 
