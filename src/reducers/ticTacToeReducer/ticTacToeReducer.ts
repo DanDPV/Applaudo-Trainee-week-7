@@ -8,14 +8,13 @@ const ticTacToeReducer = (
   action: {
     type: ticTacToeActionsTypes;
     payload: {
-      winner?: TicTacToeSquareType | string,
-      error?: string,
-      currentPosition?: number,
-      xIsNext?: boolean,
-      isTraveling?: boolean,
-      isReplaying?: boolean,
-      squares?: TicTacToeSquareType[],
-      historySquares?: TicTacToeSquareType[],
+      winner?: TicTacToeSquareType | string;
+      error?: string;
+      currentPosition?: number;
+      xIsNext?: boolean;
+      isTraveling?: boolean;
+      isReplaying?: boolean;
+      squares?: TicTacToeSquareType[];
     };
   },
 ) => {
@@ -27,9 +26,11 @@ const ticTacToeReducer = (
     isTraveling,
     isReplaying,
     squares,
-    historySquares,
   } = action.payload;
   switch (action.type) {
+    case ticTacToeActionsTypes.SET_WINNER:
+      return { ...state, winner };
+
     case ticTacToeActionsTypes.SET_ERROR:
       return { ...state, error };
 
@@ -51,6 +52,13 @@ const ticTacToeReducer = (
 
     case ticTacToeActionsTypes.RESET:
       return ticTacToeInitialState;
+
+    case ticTacToeActionsTypes.REPLAY:
+      return {
+        ...state,
+        isTraveling,
+        isReplaying,
+      };
 
     default:
       return state;
