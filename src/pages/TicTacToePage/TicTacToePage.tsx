@@ -10,7 +10,7 @@ import ticTacToeInitialState from 'reducers/ticTacToeReducer/ticTacToeInitialSta
 import ITicTacToeReducerState from 'reducers/ticTacToeReducer/ITicTacToeReducerState';
 import ITicTacToeReducerAction from 'reducers/ticTacToeReducer/ITicTacToeReducerAction';
 import ticTacToeActionsTypes from 'reducers/ticTacToeReducer/ticTacToeActionsTypes';
-import 'pages/TicTacToePage/TicTacToePage.css';
+import 'pages/TicTacToePage/TicTacToePage.scss';
 
 const TicTacToePage = () => {
   const [state, dispatch] = useReducer<
