@@ -7,7 +7,7 @@ import ITimeMachineReducerAction from 'reducers/timeMachineReducer/ITimeMachineR
 import timeMachineReducer from 'reducers/timeMachineReducer/timeMachineReducer';
 import timeMachineInitialState from 'reducers/timeMachineReducer/timeMachineInitialState';
 import timeMachineActionsTypes from 'reducers/timeMachineReducer/timeMachineActionsTypes';
-import 'pages/TimeMachinePage/TimeMachinePage.css';
+import 'pages/TimeMachinePage/TimeMachinePage.scss';
 
 const TimeMachinePage = () => {
   const size = 4;
