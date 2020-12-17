@@ -1,8 +1,10 @@
 import ticTacToeActionsTypes from 'reducers/ticTacToeReducer/ticTacToeActionsTypes';
+import ITicTacToeReducerState from 'reducers/ticTacToeReducer/ITicTacToeReducerState';
 import TicTacToeSquareType from 'types/TicTacToeSquareType';
+import ticTacToeInitialState from 'reducers/ticTacToeReducer/ticTacToeInitialState';
 
 const ticTacToeReducer = (
-  state = [],
+  state = {} as ITicTacToeReducerState,
   action: {
     type: ticTacToeActionsTypes;
     payload: {
@@ -48,12 +50,7 @@ const ticTacToeReducer = (
       };
 
     case ticTacToeActionsTypes.RESET:
-      return {
-        ...state,
-        currentPosition,
-        isTraveling,
-        squares,
-      };
+      return ticTacToeInitialState;
 
     default:
       return state;
