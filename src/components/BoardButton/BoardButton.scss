@@ -11,8 +11,8 @@
   width: 100%;
   padding: 0px;
   cursor: pointer;
-}
 
-.square:focus {
-  outline: none;
+  &:focus {
+    outline: none;
+  }
 }
