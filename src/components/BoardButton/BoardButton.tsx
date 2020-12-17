@@ -6,7 +6,7 @@ interface IBoardButton {
   position: number;
   bgColor: string;
   checked: boolean;
-  isTraveling: boolean;
+  isTraveling: boolean | undefined;
   handleClick(position: number): void;
 }
 
