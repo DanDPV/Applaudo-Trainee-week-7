@@ -82,6 +82,7 @@ const TicTacToePage = () => {
       } else {
         newIsTraveling = false;
       }
+
       dispatch({
         type: ticTacToeActionsTypes.MOVE_IN_TIME,
         payload: {
@@ -120,6 +121,7 @@ const TicTacToePage = () => {
         isReplaying: true,
       },
     });
+
     const firstPos = timeLength - 1;
     dispatch({
       type: ticTacToeActionsTypes.MOVE_IN_TIME,
@@ -129,6 +131,7 @@ const TicTacToePage = () => {
         squares: getPreviousValue(firstPos) ?? ticTacToeInitialState.squares,
       },
     });
+
     for (let position = firstPos - 1; position >= 0; position -= 1) {
       await sleep(500).then(() => {
         dispatch({
@@ -141,6 +144,7 @@ const TicTacToePage = () => {
         });
       });
     }
+
     dispatch({
       type: ticTacToeActionsTypes.REPLAY,
       payload: {
@@ -152,11 +156,12 @@ const TicTacToePage = () => {
 
   useEffect(() => {
     if (historySquares) {
-      if (calculateTicTacToeWinner(historySquares)) {
+      const newWinner = calculateTicTacToeWinner(historySquares);
+      if (newWinner) {
         dispatch({
           type: ticTacToeActionsTypes.SET_WINNER,
           payload: {
-            winner: calculateTicTacToeWinner(historySquares),
+            winner: newWinner,
           },
         });
       } else if (!historySquares.includes(null)) {
