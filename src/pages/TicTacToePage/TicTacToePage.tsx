@@ -39,31 +39,30 @@ const TicTacToePage = () => {
       if (historySquares) {
         const newSquares = historySquares.slice();
 
-        if (newSquares) {
-          if (calculateTicTacToeWinner(historySquares) || !historySquares.includes(null)) {
-            dispatch({
-              type: ticTacToeActionsTypes.SET_ERROR,
-              payload: { error: 'The game has ended' },
-            });
-            return;
-          }
-          if (historySquares[position]) {
-            dispatch({
-              type: ticTacToeActionsTypes.SET_ERROR,
-              payload: { error: 'That position is already taken' },
-            });
-            return;
-          }
-
-          newSquares[position] = xIsNext ? 'x' : 'o';
+        if (calculateTicTacToeWinner(historySquares) || !historySquares.includes(null)) {
           dispatch({
-            type: ticTacToeActionsTypes.SET_NEXT_PLAY,
-            payload: {
-              xIsNext: !xIsNext,
-              squares: newSquares,
-            },
+            type: ticTacToeActionsTypes.SET_ERROR,
+            payload: { error: 'The game has ended' },
           });
+          return;
         }
+
+        if (historySquares[position]) {
+          dispatch({
+            type: ticTacToeActionsTypes.SET_ERROR,
+            payload: { error: 'That position is already taken' },
+          });
+          return;
+        }
+
+        newSquares[position] = xIsNext ? 'x' : 'o';
+        dispatch({
+          type: ticTacToeActionsTypes.SET_NEXT_PLAY,
+          payload: {
+            xIsNext: !xIsNext,
+            squares: newSquares,
+          },
+        });
       }
     } else {
       dispatch({
