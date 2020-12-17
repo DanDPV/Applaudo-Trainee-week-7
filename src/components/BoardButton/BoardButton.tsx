@@ -1,6 +1,6 @@
 /* eslint no-unused-vars: 0 */
 import React from 'react';
-import 'components/BoardButton/BoardButton.css';
+import 'components/BoardButton/BoardButton.scss';
 
 interface IBoardButton {
   position: number;
