@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import TicTacToeBoardButton from 'components/TicTacToeBoardButton/TicTacToeBoardButton';
 import TicTacToeSquareType from 'types/TicTacToeSquareType';
-import 'components/TicTacToeBoard/TicTacToeBoard.css';
+import 'components/TicTacToeBoard/TicTacToeBoard.scss';
 
 interface ITicTacToeBoard {
   squares: TicTacToeSquareType[] | undefined;
