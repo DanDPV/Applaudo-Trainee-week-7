@@ -1,6 +1,6 @@
 /* eslint no-unused-vars: 0 */
 import React, { useEffect, useState } from 'react';
-import 'components/TimeMachineMenu/TimeMachineMenu.css';
+import 'components/TimeMachineMenu/TimeMachineMenu.scss';
 
 interface ITimeMachineMenu {
   currentPosition: number | undefined;
