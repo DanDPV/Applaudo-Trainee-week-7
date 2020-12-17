@@ -1,10 +1,9 @@
 import ticTacToeActionsTypes from 'reducers/ticTacToeReducer/ticTacToeActionsTypes';
-import ITicTacToeReducerState from 'reducers/ticTacToeReducer/ITicTacToeReducerState';
 import TicTacToeSquareType from 'types/TicTacToeSquareType';
 import ticTacToeInitialState from 'reducers/ticTacToeReducer/ticTacToeInitialState';
 
 const ticTacToeReducer = (
-  state = {} as ITicTacToeReducerState,
+  state = ticTacToeInitialState,
   action: {
     type: ticTacToeActionsTypes;
     payload: {
