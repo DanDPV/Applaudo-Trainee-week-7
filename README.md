@@ -7,10 +7,11 @@ You must run the application on a live server with npm start
 **Autor:** Vicente Daniel De Paz Velásquez
 
 You can see the live webpage using the link:
-https://dandpv.github.io/Applaudo-Trainee-week-7/
+https://applaudo-trainee-week-7.dan-dp.vercel.app
 
-The live webpage is using Github pages with the follow repository:
-https://github.com/DanDPV/Applaudo-Trainee-week-7
+or
+
+https://applaudo-trainee-week-7-2h4eft7zj.vercel.app
 
 # Getting Started with Create React App
 
