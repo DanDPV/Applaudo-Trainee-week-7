@@ -3,7 +3,7 @@ import ticTacToeActionsTypes from 'reducers/ticTacToeReducer/ticTacToeActionsTyp
 
 interface ITicTacToeReducerAction {
   type: ticTacToeActionsTypes;
-  payload: {
+  payload?: {
     winner?: TicTacToeSquareType | string;
     error?: string;
     currentPosition?: number;
