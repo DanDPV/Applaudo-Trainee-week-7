@@ -23,11 +23,11 @@ const TimeMachinePage = () => {
   } = state;
   const [, getPreviousValue, timeLength] = useTimeMachine(historySquares);
 
-  const handleClick = (i: number) => {
+  const handleClick = (position: number) => {
     if (!isTraveling) {
       const newSquares = initTimeMachineValues;
       if (newSquares) {
-        newSquares[i] = true;
+        newSquares[position] = true;
         dispatch({
           type: timeMachineActionsTypes.SET_NEXT_OPTION,
           payload: {
