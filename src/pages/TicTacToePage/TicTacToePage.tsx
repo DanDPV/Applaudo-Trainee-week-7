@@ -109,7 +109,6 @@ const TicTacToePage = () => {
     reset();
     dispatch({
       type: ticTacToeActionsTypes.RESET,
-      payload: {},
     });
   };
 
