@@ -1,16 +1,10 @@
 import timeMachineActionsTypes from 'reducers/timeMachineReducer/timeMachineActionsTypes';
 import timeMachineInitialState from 'reducers/timeMachineReducer/timeMachineInitialState';
+import ITimeMachineReducerAction from 'reducers/timeMachineReducer/ITimeMachineReducerAction';
 
 const timeMachineReducer = (
   state = timeMachineInitialState,
-  action: {
-    type: timeMachineActionsTypes;
-    payload: {
-      currentPosition?: number;
-      isTraveling?: boolean;
-      squares?: boolean[];
-    };
-  },
+  action: ITimeMachineReducerAction,
 ) => {
   const {
     currentPosition,
